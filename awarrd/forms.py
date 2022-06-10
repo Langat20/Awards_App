@@ -11,3 +11,10 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+class PostForm(forms.ModelForm):
+    photo = ImageField(label='')
+
+    class Meta:
+        model = Post
+        fields = ('photo', 'title', 'url', 'description',)
+
