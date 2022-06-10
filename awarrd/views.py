@@ -106,3 +106,8 @@ def project(request, post):
     }
     return render(request, 'project.html', params)
 
+@login_required(login_url='login')
+def profile(request, username):
+    return render(request, 'profile.html')
+
+
