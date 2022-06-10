@@ -30,3 +30,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['name', 'profile_picture', 'bio']
 
+class RatingsForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['design', 'usability', 'content']
