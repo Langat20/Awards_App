@@ -4,7 +4,7 @@ from .models import *
 
 class TestProfile(TestCase):
     def setUp(self):
-        self.user = User(id=1, username='dan', password='njoro1234')
+        self.user = User(id=1, username='dap', password='manchito')
         self.user.save()
 
     def test_instance(self):
