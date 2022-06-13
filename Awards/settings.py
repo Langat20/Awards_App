@@ -14,12 +14,7 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
-from decouple import config,Csv
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-
+from decouple import config,Csv     
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = 'django-insecure-ozzn^c1^8+(48!5*6lc$r#)l89j2scye$k7fj@l%#((7#0i6cb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -45,15 +40,7 @@ INSTALLED_APPS = [
     'awarrd',
     'crispy_forms',
     'bootstrap4',
-    'cloudinary',
 ]
-
-cloudinary.config( 
-  cloud_name = "dw5yis1fz", 
-  api_key = "892955958318618", 
-  api_secret = "mzaA_iTjT9hQVLGEpc9H4ylMLZM" 
-)
-
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -79,7 +66,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',  #load uploaded images
             ],
         },
     },
@@ -91,6 +77,14 @@ WSGI_APPLICATION = 'Awards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'award',
+#         'USER': 'moringa',
+#         'PASSWORD': 'langat20',
+#     }
+# }
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -150,23 +144,24 @@ USE_I18N = True
 USE_TZ = True
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# configuring the location for media
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = 'index'
 
@@ -177,5 +172,4 @@ UPLOADCARE = {
     'secret':'74c0b154d990c3659355',
 }
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

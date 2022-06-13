@@ -6,8 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect 
 from django.contrib.auth.models import User
-# from .serializers import ProjectSerializer,ProfileSerializer
-from rest_framework import generics
 
 # Create your views here.
 # @login_required(login_url='login')
@@ -140,22 +138,3 @@ def edit_profile(request, username):
         'prof_form': prof_form
     }
     return render(request, 'edit.html', params)
-
-# class ProfileList(generics.ListCreateAPIView):
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-    
-# class ProjectList(generics.ListCreateAPIView):
-#     queryset = Project.objects.all()
-#     serializer_class = ProjectSerializer
-    
-#     def perform_create(self, serializer): # new
-#         serializer.save(Author=self.request.user)
-    
-# class ProfileSingle(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-    
-# class ProjectSingle(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Project.objects.all()
-#     serializer_class = ProjectSerializer

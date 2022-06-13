@@ -1,4 +1,4 @@
-from django.urls import path, re_path, include
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -10,10 +10,4 @@ urlpatterns = [
     path('profile/<username>/', views.profile, name='profile'),
     path('<username>/profile', views.user_profile, name='userprofile'),
     path('profile/<username>/settings', views.edit_profile, name='edit'),
-    #  path('api/v1/projects',views.ProjectList.as_view(),name='projectsEndpoint'),
-    # re_path(r'^api/projects/$', views.ProjectList.as_view()),
-    # re_path(r'^api/profiles/$', views.ProfileList.as_view()),
-    # re_path(r'^api/users/$', views.UserList.as_view()),
-    # re_path(r'api/Award/project-id/(?P<pk>[0-9]+)/$',
-    #     views.ProjectDescription.as_view()),
 ]
