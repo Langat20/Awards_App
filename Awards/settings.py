@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'awarrd',
     'crispy_forms',
     'bootstrap4',
-    'cloudinary'
+    'cloudinary',
 ]
 
 cloudinary.config( 
