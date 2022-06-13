@@ -15,6 +15,12 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,9 +45,18 @@ INSTALLED_APPS = [
     'awarrd',
     'crispy_forms',
     'bootstrap4',
+    'cloudinary'
 ]
 
+cloudinary.config( 
+  cloud_name = "dw5yis1fz", 
+  api_key = "892955958318618", 
+  api_secret = "mzaA_iTjT9hQVLGEpc9H4ylMLZM" 
+)
+
+
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  #load uploaded images
             ],
         },
     },
@@ -158,4 +174,5 @@ UPLOADCARE = {
     'secret':'74c0b154d990c3659355',
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
