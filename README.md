@@ -4,7 +4,7 @@
 Kipkurui Evans
 
 # Description
-A web application to post websites and other web projects as well as review posted projects. You can visit the live site on 
+A web application to post websites and other web projects as well as review posted projects. You can visit the live site on https://awards-evslg.herokuapp.com/
 
 
 ## User Story
