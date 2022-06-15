@@ -33,7 +33,7 @@ A web application to post websites and other web projects as well as review post
 * Create a database and edit the database configurations in `settings.py` to your own credentials.
 * Make migrations
 
-        $ python manage.py makemigrations awwardsapp
+        $ python manage.py makemigrations 
         $ python3 manage.py migrate 
 
 * To run the application, in your terminal:
